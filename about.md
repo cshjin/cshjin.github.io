@@ -1,4 +1,5 @@
 # About
 
-This is where you put the contents of your *About* page. Like all your pages, it's in [Markdown](https://guides.github.com/features/mastering-markdown/) format.
-
+I am a Ph.D student from University of Illinois at Chicago, and working on some 
+machine learning problems including representation learning of structured data, 
+convex/non-convex optimization and etc.
