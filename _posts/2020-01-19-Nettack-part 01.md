@@ -1,6 +1,6 @@
 # Nettack part 01
 
-Nettack is the attack algorithm proposed in the work from [TUM](https://www.in.tum.de/daml/nettack/).
+Nettack [^1] is the attack algorithm proposed in the work from [TUM](https://www.in.tum.de/daml/nettack/) .
 Since nettack is targeted attacker for [GCN](https://arxiv.org/abs/1609.02907), 
 so we can pick the node either from training set (poison attack) or test set (evasion attack).
 
@@ -57,10 +57,23 @@ Here, I want to address the question:
 | gcn (A')       | 72.44 $\pm$ .69 | 83.92 $\pm$ .51 | 95.26 $\pm$ .40 | 84.88 $\pm$ .39 | 85.79 $\pm$ .22 | 83.28 $\pm$ .25 |
 
 
-* compare the surrogate model and gcn model with A as input, the linearized model won't hurt the performance. It is also one of the main results form SGCN [^1]
+* compare the surrogate model and gcn model with A as input, the linearized model won't hurt the performance. It is also one of the main results form SGCN [^2]
 * compare the performance in the same model with different input A and A', we cannot see a big difference in accuracy. It is mainly because the Nettack itself is a targeted attacker.
 
+## Attack the training set (poison attack)
+
+Similar to the previous setting, and now we set the target to be in the training set.
+
+| dataset        | citeseer        | cora            | polblogs        | cora_ml         | dblp            | pubmed          |
+| -------------- | --------------- | --------------- | --------------- | --------------- | --------------- | --------------- |
+| surrogate (A)  | 72.06 $\pm$ .62 | 83.08 $\pm$ .59 | 95.12 $\pm$ .18 | 84.66 $\pm$ .42 | 84.68 $\pm$ .06 | 82.71 $\pm$ .43 |
+| surrogate (A') | 71.85 $\pm$ .47 | 83.18 $\pm$ .60 | 95.08 $\pm$ .23 | 84.49 $\pm$ .46 | 84.62 $\pm$ .14 | 82.60 $\pm$ .55 |
+| gcn (A)        | 72.96 $\pm$ .77 | 84.26 $\pm$ .59 | 95.33 $\pm$ .33 | 84.99 $\pm$ .28 | 85.75 $\pm$ .12 | 83.37 $\pm$ .11 |
+| gcn (A')       | 72.63 $\pm$ .71 | 83.91 $\pm$ .59 | 95.21 $\pm$ .45 | 84.78 $\pm$ .27 | 85.87 $\pm$ .17 | 83.34 $\pm$ .17 |
+
+* no big difference compared with attacking on the test set.
 
 ## References
 
-[^1]: SGCN: http://proceedings.mlr.press/v97/wu19e.html9
+[^1]: Nettack Github repo: [https://github.com/danielzuegner/nettack](https://github.com/danielzuegner/nettack)
+[^2]: SGCN: [http://proceedings.mlr.press/v97/wu19e.html9](http://proceedings.mlr.press/v97/wu19e.html9)
